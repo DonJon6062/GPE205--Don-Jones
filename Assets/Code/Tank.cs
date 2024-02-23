@@ -40,4 +40,8 @@ public class Tank : Pawn
         mover.Rotate(-turnSpeed);
     }
 
+    public override void RotateTowards(Vector3 targetPosition)
+    {
+
+    }
 }

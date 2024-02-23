@@ -12,6 +12,12 @@ public class PlayerController : Controller
     // Start is called before the first frame update
     public override void Start()
     {
+        //if we have a game manager
+        if(GameManager.instance != null)
+        {
+            //register w/game manager
+            GameManager.instance.players.Add(this);
+        }
         base.Start();
     }
     // Update is called once per frame
@@ -45,5 +51,17 @@ public class PlayerController : Controller
             pawn.RotateCounterClockwise();
         }
     }
-
+    public void OnDestroy()
+    {
+        //if there is a game manager
+        if (GameManager.instance != null) 
+        {
+            //instance tarcks destroyed player
+            if (GameManager.instance.players != null)
+            {
+                //deregister w/game manager
+                GameManager.instance.players.Remove(this);
+            }
+        }
+    }
 }

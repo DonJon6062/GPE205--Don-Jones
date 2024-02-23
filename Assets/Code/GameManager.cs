@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public Transform playerSpawnTransform;
 
+    public List<PlayerController> players;
+
     //Awake; happens when the obj is created
     private void Awake()
     {
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject newPlayerObj = Instantiate(playerControllerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 
-        GameObject newPawnObj = Instantiate(newPlayerObj, playerSpawnTransform.position, Quaternion.identity) as GameObject;
+        GameObject newPawnObj = Instantiate(tankPrefab, playerSpawnTransform.position, Quaternion.identity) as GameObject;
 
         Controller newPlayerController = newPlayerObj.GetComponent<Controller>();
 
